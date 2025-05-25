@@ -100,9 +100,6 @@ y1 = None
 x2 = None
 y2 = None
 
-# Mensaje de juego en construcción
-mensaje_construccion = "Juego en construcción"
-
 """
 Funciones útiles
 """
@@ -165,7 +162,7 @@ reproducimos el sonido de fondo
 """
 pantalla_juego = pygame.display.set_mode((anchura_pantalla, altura_pantalla))
 pygame.display.set_caption('Juego de memoria en Python - Grupo1')
-#pygame.mixer.Sound.play(sonido_fondo, -1)  # El -1 indica un loop infinito
+pygame.mixer.Sound.play(sonido_fondo, -1)  # El -1 indica un loop infinito
 # Ciclo infinito...
 while True:
     # Escuchar eventos, pues estamos en un ciclo infinito que se repite varias veces por segundo
@@ -184,11 +181,9 @@ while True:
             # Si el click fue sobre el botón y el juego no se ha iniciado, entonces iniciamos el juego
             xAbsoluto, yAbsoluto = event.pos
             if boton.collidepoint(event.pos):
-                #if not juego_iniciado:
-                #    iniciar_juego()
-                print(mensaje_construccion)
-                pygame.quit()
-                sys.exit()
+                if not juego_iniciado:
+                 iniciar_juego()
+
 
             else:
                 # Si no hay juego iniciado, ignoramos el clic
